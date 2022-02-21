@@ -1,30 +1,28 @@
 use anyhow::Result;
-use argh::FromArgs;
+use clap::Parser;
 
 mod battery;
 
 use crate::battery::cmd_battery;
 
 /// Polybar custom modules
-#[derive(Debug, FromArgs)]
+#[derive(Debug, Parser)]
 struct Args {
-    #[argh(subcommand)]
+    #[clap(subcommand)]
     cmd: Cmd,
 }
 
-#[derive(Debug, FromArgs)]
-#[argh(subcommand)]
+#[derive(Debug, Parser)]
 enum Cmd {
     Battery(BatteryArgs),
 }
 
 /// Custom battery module
-#[derive(Debug, FromArgs)]
-#[argh(subcommand, name = "battery")]
+#[derive(Debug, Parser)]
 pub struct BatteryArgs {}
 
 fn main() -> Result<()> {
-    let args: Args = argh::from_env();
+    let args = Args::parse();
 
     match args.cmd {
         Cmd::Battery(args) => cmd_battery(args)?,
