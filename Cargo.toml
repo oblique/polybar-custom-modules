@@ -7,4 +7,4 @@ edition = "2018"
 [dependencies]
 anyhow = "1.0.55"
 clap = { version = "3.1.1", features = ["derive"] }
-battery = "0.7.8"
+starship-battery = "0.8.1"

@@ -1,6 +1,6 @@
 use anyhow::Result;
-use battery::units::ratio;
-use battery::{Battery, Manager, State};
+use starship_battery::units::ratio;
+use starship_battery::{Battery, Manager, State};
 use std::thread;
 use std::time::Duration;
 
